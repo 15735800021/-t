@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- 某些整数能分解成若⼲个连续整数的和的形式，例如
+        15 = 1 + 2＋3＋4＋5
+        15 = 4 + 5 + 6
+        15 = 7 + 8
+       某些整数不能分解为连续整数的和，例如：16
+       输⼊：⼀个整数N（N <= 10000）
+       输出：整数N对应的所有分解组合，按照每个分解中的最⼩整数从⼩到⼤输出，每个分解
+       占⼀⾏，每个数字之间有⼀个空格（每⾏最后保留⼀个空格）；如果没有任何分解组合，
+       则输出NONE。 -->
+       <input type="text" placeholder="请输入数字" id="number">   
+       <input type="submit" value="提交" id="sub"> 
+<script>
+    
+    var oSub = document.getElementById("sub");
+
+    var a,b;
+    var arr =[]; 
+    //i为元素开始数字
+oSub.onclick=function(){
+    var n = document.getElementById("number").value;
+    for(var i=1;i<n;i++){
+        //j为一个组合元素个数
+        for(var j=1;j<n;j++){
+            //设想有j个i相加还需补足((j-1)((j-1)+1))/2
+            if(i*j+(j*j-j)/2==n){
+                a=i;b=j;
+                arr.push({a:a,b:b});
+            }
+        } 
+        
+    }
+    if(arr==false){
+        document.write("NONE");
+    }
+    for(var j=0;j<arr.length;j++){
+         for(var i=arr[j].a;i<=arr[j].b+arr[j].a-1;i++){
+            document.write(i+" ");
+        }
+        document.write("<br/>");
+    }
+}    
+</script>
+</body>
+</html>

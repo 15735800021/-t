@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 编程实现功能：
+功能是求出字符串 s 与字符串 t 的第⼆⻓公共单词(这⾥，假设两个字符串均由英⽂字⺟和
+空格字符组成)；若找到这样的公共单词，函数返回该单词，否则，函数返回NULL，如果
+有多个满⾜要求，则返回第⼀个单词。
+例如：若 s=“This is C programming text”，t=“This is a text for C programming”，则函数
+返回“this”。 -->
+<input type="text" placeholder="请输入第一个字符串" id="one">
+<input type="text" placeholder="请输入第二个字符串" id="two">
+<input type="submit" id="submit" value="提交">
+<div id="result">
+
+</div>
+<script>
+
+    var oResult = document.getElementById("result");
+    var oSubmit = document.getElementById("submit");
+    
+    function add(s,t){
+        var a = s.split(" ");
+        var b = t.split(" ");
+        var c = [];
+        for(var i=0;i<b.length;i++){
+            for(var j=0;j<a.length;j++){
+                if(b[i]==a[j]){
+                    c.push(a[j]); 
+                }
+            }  
+        }
+        if(c==false){
+            oResult.innerHTML="NULL";
+        }else{
+          c.sort(function(a,b){return b.length - a.length;});
+          oResult.innerHTML=c[1]; 
+        }
+        
+    }
+    oSubmit.onclick= function(){
+        var s = document.getElementById("one").value;
+        var t = document.getElementById("two").value;
+        add(s,t);
+    }
+</script>
+</body>
+</html>
+
